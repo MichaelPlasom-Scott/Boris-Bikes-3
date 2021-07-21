@@ -1,5 +1,5 @@
 class DockingStation
-  
+  attr_reader :docked_bikes
   
   def initialize
     @docked_bikes = []
@@ -7,7 +7,12 @@ class DockingStation
 
 
   def release_bike
-    Bike.new
+    raise 'No bikes available' if @docked_bikes.empty? == true
+    @docked_bikes[0]
+  end
+
+  def dock_bikes(arrayOfBikes)
+    @docked_bikes += arrayOfBikes
   end
 end 
 
@@ -17,3 +22,4 @@ class Bike
 
   end 
 end  
+
